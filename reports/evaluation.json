@@ -1,0 +1,356 @@
+{
+  "metadata": {
+    "dataset_url": "https://raw.githubusercontent.com/4GeeksAcademy/k-means-project-tutorial/main/housing.csv",
+    "dataset_sha256": "0e4a0bc8b337d88c95259a8ec05a58c662f26f87487f9cbf2448fe93207bcb5c",
+    "dataset_bytes": 1959699,
+    "n_rows": 20640,
+    "features": [
+      "Latitude",
+      "Longitude",
+      "MedInc"
+    ],
+    "columns_unused": [
+      "HouseAge",
+      "AveRooms",
+      "AveBedrms",
+      "Population",
+      "AveOccup",
+      "MedHouseVal"
+    ],
+    "test_size": 0.2,
+    "random_state": 42,
+    "n_clusters": 6,
+    "n_train": 16512,
+    "n_test": 4128,
+    "kmeans": {
+      "scaler": "StandardScaler ajustado en entrenamiento",
+      "n_init": 10,
+      "algorithm": "lloyd",
+      "inertia_on_scaled_train": 8069.187859270163
+    },
+    "selected_supervised_model": "random_forest",
+    "selected_supervised_label": "Bosque aleatorio (100 árboles)",
+    "selection_rule": "Se elige el clasificador con mayor F1 macro medio en validación cruzada estratificada de 5 pliegues sobre el entrenamiento. Si el F1 medio empata, se prefiere la menor desviación típica de los pliegues y, después, el modelo más simple de esta lista: regresión logística, árbol de decisión, k vecinos, bosque aleatorio. El conjunto de prueba no entra en la elección.",
+    "python": "3.12.3",
+    "sklearn": "1.9.1",
+    "pandas": "3.1.1",
+    "models": {
+      "kmeans": "models/kmeans.joblib",
+      "supervised_classifier": "models/supervised_classifier.joblib"
+    }
+  },
+  "cluster_dtype_before": "int32",
+  "cluster_dtype_after": "category",
+  "cluster_categories": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "cluster_summary": [
+    {
+      "cluster": 0,
+      "n_train": 1321,
+      "n_test": 337,
+      "mean_latitude": 36.081627554882665,
+      "mean_longitude": -119.72759273277819,
+      "mean_medinc": 2.6250236184708555
+    },
+    {
+      "cluster": 1,
+      "n_train": 3380,
+      "n_test": 829,
+      "mean_latitude": 33.8678875739645,
+      "mean_longitude": -118.02418934911243,
+      "mean_medinc": 5.311771272189349
+    },
+    {
+      "cluster": 2,
+      "n_train": 453,
+      "n_test": 112,
+      "mean_latitude": 34.900551876379694,
+      "mean_longitude": -119.23701986754968,
+      "mean_medinc": 10.443602207505519
+    },
+    {
+      "cluster": 3,
+      "n_train": 3931,
+      "n_test": 962,
+      "mean_latitude": 38.345975578733146,
+      "mean_longitude": -121.90072500635972,
+      "mean_medinc": 2.8350436530145
+    },
+    {
+      "cluster": 4,
+      "n_train": 2239,
+      "n_test": 514,
+      "mean_latitude": 37.70185797230907,
+      "mean_longitude": -121.9390531487271,
+      "mean_medinc": 5.518263644484144
+    },
+    {
+      "cluster": 5,
+      "n_train": 5188,
+      "n_test": 1374,
+      "mean_latitude": 33.816489976869704,
+      "mean_longitude": -117.81673284502698,
+      "mean_medinc": 2.7807768889745565
+    }
+  ],
+  "k_diagnostics": [
+    {
+      "k": 2,
+      "inertia": 21504.215046794117,
+      "silhouette": 0.5472980826256176
+    },
+    {
+      "k": 3,
+      "inertia": 15247.451782720153,
+      "silhouette": 0.5154271169994585
+    },
+    {
+      "k": 4,
+      "inertia": 11639.21945809523,
+      "silhouette": 0.43279852724050827
+    },
+    {
+      "k": 5,
+      "inertia": 9509.207938420494,
+      "silhouette": 0.3869408895092221
+    },
+    {
+      "k": 6,
+      "inertia": 8069.187859270163,
+      "silhouette": 0.39873655111734757
+    },
+    {
+      "k": 7,
+      "inertia": 7020.677151029331,
+      "silhouette": 0.3717615747430639
+    },
+    {
+      "k": 8,
+      "inertia": 6201.625535024992,
+      "silhouette": 0.35523743436982086
+    },
+    {
+      "k": 9,
+      "inertia": 5630.970810600289,
+      "silhouette": 0.3580623143551533
+    },
+    {
+      "k": 10,
+      "inertia": 5117.289568298843,
+      "silhouette": 0.3409729757610149
+    }
+  ],
+  "model_comparison": [
+    {
+      "name": "logistic_regression",
+      "label": "Regresión logística",
+      "simplicity": 0,
+      "f1_macro_mean": 0.9834196265378796,
+      "f1_macro_std": 0.004999699951102048,
+      "fold_0": 0.9841259367788404,
+      "fold_1": 0.9752882086672575,
+      "fold_2": 0.9853725260637224,
+      "fold_3": 0.9834554694600786,
+      "fold_4": 0.9888559917194998
+    },
+    {
+      "name": "decision_tree",
+      "label": "Árbol de decisión",
+      "simplicity": 1,
+      "f1_macro_mean": 0.9871474258716745,
+      "f1_macro_std": 0.0036185773547679264,
+      "fold_0": 0.9919603738508248,
+      "fold_1": 0.9832565168423627,
+      "fold_2": 0.9893040241425588,
+      "fold_3": 0.9871382783783743,
+      "fold_4": 0.9840779361442515
+    },
+    {
+      "name": "knn",
+      "label": "k vecinos más cercanos (15)",
+      "simplicity": 2,
+      "f1_macro_mean": 0.9841224319805727,
+      "f1_macro_std": 0.0030205809845776943,
+      "fold_0": 0.9872812318858055,
+      "fold_1": 0.9799449054715966,
+      "fold_2": 0.9868555082161635,
+      "fold_3": 0.9835169418119888,
+      "fold_4": 0.9830135725173089
+    },
+    {
+      "name": "random_forest",
+      "label": "Bosque aleatorio (100 árboles)",
+      "simplicity": 3,
+      "f1_macro_mean": 0.9904610352734968,
+      "f1_macro_std": 0.001237954702323545,
+      "fold_0": 0.9887886394491717,
+      "fold_1": 0.9904338247297572,
+      "fold_2": 0.9898026781221869,
+      "fold_3": 0.9913960405434584,
+      "fold_4": 0.9918839935229098
+    }
+  ],
+  "test_metrics": {
+    "accuracy": 0.9951550387596899,
+    "balanced_accuracy": 0.9919653140232977,
+    "f1_macro": 0.9933820167935865,
+    "f1_weighted": 0.9951534728163388,
+    "f1_per_cluster": [
+      0.9895678092399404,
+      0.9957805907172996,
+      0.990990990990991,
+      0.9937565036420395,
+      0.9912875121006777,
+      0.9989086940705711
+    ],
+    "worst_cluster": 0,
+    "worst_f1": 0.9895678092399404,
+    "classification_report": "              precision    recall  f1-score   support\n\n           0      0.994     0.985     0.990       337\n           1      0.995     0.996     0.996       829\n           2      1.000     0.982     0.991       112\n           3      0.995     0.993     0.994       962\n           4      0.987     0.996     0.991       514\n           5      0.999     0.999     0.999      1374\n\n    accuracy                          0.995      4128\n   macro avg      0.995     0.992     0.993      4128\nweighted avg      0.995     0.995     0.995      4128\n",
+    "confusion_matrix": [
+      [
+        332,
+        1,
+        0,
+        3,
+        1,
+        0
+      ],
+      [
+        1,
+        826,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        2,
+        110,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        955,
+        6,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        512,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1373
+      ]
+    ]
+  },
+  "importance_note": "Importancia por impureza, variables sin estandarizar: Latitude=0.270, Longitude=0.256, MedInc=0.474.",
+  "reload_kmeans_ok": true,
+  "reload_supervised_ok": true,
+  "lecturas": {
+    "escala": "En el entrenamiento, la desviación típica es 2.14 en latitud, 2.01 en longitud y 1.90 en MedInc. Las cifras brutas se parecen, pero las unidades no: grados frente a la escala de ingreso del archivo. StandardScaler se ajusta solo con el entrenamiento y K-Means usa la distancia euclídea en ese espacio.",
+    "k": "La inercia baja de 21504 en k=2 a 5117 en k=10. El mayor descenso relativo entre k consecutivos está entre k=2 y k=3 (29.1 %). El silhouette máximo del rango es 0.547 en k=2. El modelo guardado usa k=6, con silhouette 0.399 e inercia 8069, porque ese k lo fija el enunciado. De k=5 a k=6 el silhouette pasa de 0.387 a 0.399 y en k=7 baja a 0.372. Es un repunte local, no el máximo del rango. Este diagnóstico no lo sustituye.",
+    "clusters": "El entrenamiento tiene 16512 viviendas y la prueba 4128. K-Means se ajusta solo con el entrenamiento y después asigna la prueba.\n\nEl grupo más al norte es el 3 (latitud media 38.35, longitud media -121.90, MedInc medio 2.84, n=3931 en entrenamiento). El más al sur es el 5 (latitud 33.82, MedInc 2.78). El más al oeste es el 4 (longitud -121.94) y el más al este es el 5 (longitud -117.82). Longitud más baja quiere decir más al oeste, hacia el Pacífico, porque el gráfico usa grados sin proyección.\n\nEl MedInc medio más alto está en el cluster 2 (10.44, n=453) y el más bajo en el 0 (2.63). En el archivo, MedInc va de 0.4999 a 15.0001. Ese tope coincide con el California Housing público, donde la unidad son decenas de miles de dólares de 1990.\n\nEn el mapa hay grupos que ocupan la misma zona y se distinguen por el ingreso, porque el gráfico solo muestra latitud y longitud y MedInc también entra en la distancia. Los clusters 1 y 5 tienen centros a 0.21 grados (MedInc medio 5.31 y 2.78; n=3380 y 5188). Los clusters 3 y 4 tienen centros a 0.65 grados (MedInc medio 2.84 y 5.52; n=3931 y 2239).\n\nTodos los clusters reciben viviendas de prueba. El mínimo es 112. La mayor diferencia de proporción entre entrenamiento y prueba es de 1.9 puntos porcentuales, en el cluster 5. Las cruces de la prueba caen sobre las mismas nubes que el entrenamiento: la predicción no abre una región nueva.",
+    "modelo": "Se elige el clasificador con mayor F1 macro medio en validación cruzada estratificada de 5 pliegues sobre el entrenamiento. Si el F1 medio empata, se prefiere la menor desviación típica de los pliegues y, después, el modelo más simple de esta lista: regresión logística, árbol de decisión, k vecinos, bosque aleatorio. El conjunto de prueba no entra en la elección.\n\nResultado: Bosque aleatorio (100 árboles) con F1 macro medio 0.990 (desviación 0.001). El siguiente es Árbol de decisión con 0.987. La diferencia es 0.003.\n\nEn la prueba, que no participó en la elección, la exactitud es 0.995, el F1 macro 0.993, el F1 ponderado 0.995 y la exactitud balanceada 0.992. El cluster con F1 más bajo es el 0 (0.990). Estas cifras miden si el clasificador reproduce las etiquetas de K-Means. No miden el precio de la vivienda ni una etiqueta humana.\n\nImportancia por impureza, variables sin estandarizar: Latitude=0.270, Longitude=0.256, MedInc=0.474."
+  },
+  "contrast": {
+    "font_requested_by_signal": "Arial, Helvetica, sans-serif",
+    "font_used": "Arimo",
+    "font_reason": "Orden de búsqueda: Arial, Helvetica, Arimo, Liberation Sans. No se descargan fuentes. En esta máquina Arial y Helvetica no están; Arimo es la siguiente, métricamente compatible con Arial.",
+    "text": [
+      {
+        "name": "ink",
+        "hex": "#18202B",
+        "background": "canvas",
+        "ratio": 15.44
+      },
+      {
+        "name": "ink",
+        "hex": "#18202B",
+        "background": "surface",
+        "ratio": 16.4
+      },
+      {
+        "name": "muted",
+        "hex": "#505E70",
+        "background": "canvas",
+        "ratio": 6.22
+      },
+      {
+        "name": "muted",
+        "hex": "#505E70",
+        "background": "surface",
+        "ratio": 6.61
+      },
+      {
+        "name": "action",
+        "hex": "#B53A17",
+        "background": "canvas",
+        "ratio": 5.52
+      },
+      {
+        "name": "action",
+        "hex": "#B53A17",
+        "background": "surface",
+        "ratio": 5.86
+      }
+    ],
+    "marks": [
+      {
+        "cluster": 0,
+        "hex": "#332288",
+        "ratio_on_canvas": 11.46,
+        "ratio_on_surface": 12.17
+      },
+      {
+        "cluster": 1,
+        "hex": "#0B6E4F",
+        "ratio_on_canvas": 5.89,
+        "ratio_on_surface": 6.25
+      },
+      {
+        "cluster": 2,
+        "hex": "#9A3E00",
+        "ratio_on_canvas": 6.45,
+        "ratio_on_surface": 6.86
+      },
+      {
+        "cluster": 3,
+        "hex": "#882255",
+        "ratio_on_canvas": 8.21,
+        "ratio_on_surface": 8.73
+      },
+      {
+        "cluster": 4,
+        "hex": "#005F73",
+        "ratio_on_canvas": 6.85,
+        "ratio_on_surface": 7.28
+      },
+      {
+        "cluster": 5,
+        "hex": "#6E4B12",
+        "ratio_on_canvas": 7.38,
+        "ratio_on_surface": 7.84
+      }
+    ]
+  }
+}
