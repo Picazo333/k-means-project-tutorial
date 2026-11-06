@@ -1159,4 +1159,9 @@ def run_pipeline() -> dict:
         },
     }
     print("Modelos guardados.", flush=True)
+    print(f"CSV derivado: {PROCESSED_CSV.relative_to(ROOT)}", flush=True)
     return result
+
+
+if __name__ == "__main__":
+    run_pipeline()

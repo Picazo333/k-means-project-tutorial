@@ -9,11 +9,18 @@ Desde la raíz del repositorio, con Python 3.11 o superior:
 ```bash
 pip install pandas numpy scikit-learn matplotlib joblib pytest jupyter nbconvert ipykernel
 python src/app.py
+python src/housing_clusters.py
 python -m pytest -q
 jupyter nbconvert --to notebook --execute --inplace src/explore.ipynb
 ```
 
-`python src/app.py` vuelve a entrenar, escribe los modelos, las figuras y `reports/evaluation.json`. No hace falta `DATABASE_URL`: `src/utils.py` conserva el conector de la plantilla y este caso no lo llama.
+`python src/app.py` vuelve a entrenar y escribe los modelos, las figuras y `reports/evaluation.json`. El paso 3 del enunciado añade `cluster` al DataFrame en memoria; no pide versionar ese dataset. Para regenerar el CSV local:
+
+```bash
+python src/housing_clusters.py
+```
+
+Ese comando repite el ajuste y escribe `data/processed/housing_with_cluster.csv`. Esa ruta está en `.gitignore`. No hace falta `DATABASE_URL`: `src/utils.py` conserva el conector de la plantilla y este caso no lo llama.
 
 El ajuste que está guardado se hizo con Python 3.12.3, scikit-learn 1.9.1 y pandas 3.1.1. La semilla es 42 y el álgebra lineal va a un hilo (`OMP_NUM_THREADS=1` dentro del módulo).
 
@@ -40,7 +47,7 @@ División: 80 % entrenamiento (16512 filas) y 20 % prueba (4128), con `train_tes
 
 K-Means con `n_clusters=6`, `n_init=10`, `algorithm="lloyd"` y `random_state=42`. Antes de la distancia euclídea, un `StandardScaler` se ajusta solo con el entrenamiento. En ese conjunto la desviación típica es 2.14 en latitud, 2.01 en longitud y 1.90 en MedInc: las cifras se parecen, las unidades no.
 
-La predicción de K-Means llega como `int32` con valores 0–5. En el dataset en memoria la columna `cluster` es categórica con esas seis categorías. `data/processed/housing_with_cluster.csv` guarda el mismo número como entero, porque un CSV no conserva el dtype de pandas, más la columna `split` (`train` o `test`).
+La predicción de K-Means llega como `int32` con valores 0–5. En el DataFrame en memoria la columna `cluster` es categórica con esas seis categorías. El CSV local, si se regenera, guarda el entero y la columna `split`, porque un CSV no conserva el dtype de pandas.
 
 ![Clusters de entrenamiento y prueba. La marca rellena es el entrenamiento y la cruz es la prueba.](reports/figures/clusters_train_test.png)
 
@@ -110,9 +117,9 @@ Los dos se vuelven a cargar al final del script y la predicción coincide con la
 - `src/housing_clusters.py` — carga, división, K-Means, diagnóstico, comparación y figuras.
 - `src/app.py` — punto de entrada.
 - `src/utils.py` — conector de base de datos de la plantilla, sin uso en este caso.
-- `data/raw/housing.csv` — dataset oficial.
-- `data/processed/housing_with_cluster.csv` — las tres columnas, el cluster y el split.
-- `models/` — los dos estimadores.
+- `data/raw/housing.csv` — dataset oficial, versionado.
+- `data/processed/housing_with_cluster.csv` — CSV local con `cluster` y `split`. No va en el repo. Se regenera con `python src/housing_clusters.py`.
+- `models/` — los dos estimadores. El paso 5 pide guardarlos aquí.
 - `reports/` — métricas, lecturas y figuras.
 - `tests/test_reproducibility.py` — misma semilla, mismo etiquetado; hash del CSV; k = 6; contraste de las marcas.
 - `PROVENANCE.md` — commit de la plantilla y hash del dataset.
