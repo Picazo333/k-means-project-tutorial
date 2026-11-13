@@ -1,0 +1,81 @@
+{
+  "font_requested_by_signal": "Arial, Helvetica, sans-serif",
+  "font_used": "Arimo",
+  "font_reason": "Orden de búsqueda: Arial, Helvetica, Arimo, Liberation Sans. No se descargan fuentes. En esta máquina Arial y Helvetica no están; Arimo es la siguiente, métricamente compatible con Arial.",
+  "text": [
+    {
+      "name": "ink",
+      "hex": "#18202B",
+      "background": "canvas",
+      "ratio": 15.44
+    },
+    {
+      "name": "ink",
+      "hex": "#18202B",
+      "background": "surface",
+      "ratio": 16.4
+    },
+    {
+      "name": "muted",
+      "hex": "#505E70",
+      "background": "canvas",
+      "ratio": 6.22
+    },
+    {
+      "name": "muted",
+      "hex": "#505E70",
+      "background": "surface",
+      "ratio": 6.61
+    },
+    {
+      "name": "action",
+      "hex": "#B53A17",
+      "background": "canvas",
+      "ratio": 5.52
+    },
+    {
+      "name": "action",
+      "hex": "#B53A17",
+      "background": "surface",
+      "ratio": 5.86
+    }
+  ],
+  "marks": [
+    {
+      "cluster": 0,
+      "hex": "#332288",
+      "ratio_on_canvas": 11.46,
+      "ratio_on_surface": 12.17
+    },
+    {
+      "cluster": 1,
+      "hex": "#0B6E4F",
+      "ratio_on_canvas": 5.89,
+      "ratio_on_surface": 6.25
+    },
+    {
+      "cluster": 2,
+      "hex": "#9A3E00",
+      "ratio_on_canvas": 6.45,
+      "ratio_on_surface": 6.86
+    },
+    {
+      "cluster": 3,
+      "hex": "#882255",
+      "ratio_on_canvas": 8.21,
+      "ratio_on_surface": 8.73
+    },
+    {
+      "cluster": 4,
+      "hex": "#005F73",
+      "ratio_on_canvas": 6.85,
+      "ratio_on_surface": 7.28
+    },
+    {
+      "cluster": 5,
+      "hex": "#6E4B12",
+      "ratio_on_canvas": 7.38,
+      "ratio_on_surface": 7.84
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+En el entrenamiento, la desviación típica es 2.14 en latitud, 2.01 en longitud y 1.90 en MedInc. Las cifras brutas se parecen, pero las unidades no: grados frente a la escala de ingreso del archivo. StandardScaler se ajusta solo con el entrenamiento y K-Means usa la distancia euclídea en ese espacio.
+
+La inercia baja de 21504 en k=2 a 5117 en k=10. El mayor descenso relativo entre k consecutivos está entre k=2 y k=3 (29.1 %). El silhouette máximo del rango es 0.547 en k=2. El modelo guardado usa k=6, con silhouette 0.399 e inercia 8069, porque ese k lo fija el enunciado. De k=5 a k=6 el silhouette pasa de 0.387 a 0.399 y en k=7 baja a 0.372. Es un repunte local, no el máximo del rango. Este diagnóstico no lo sustituye.
+
+El entrenamiento tiene 16512 viviendas y la prueba 4128. K-Means se ajusta solo con el entrenamiento y después asigna la prueba.
+
+El grupo más al norte es el 3 (latitud media 38.35, longitud media -121.90, MedInc medio 2.84, n=3931 en entrenamiento). El más al sur es el 5 (latitud 33.82, MedInc 2.78). El más al oeste es el 4 (longitud -121.94) y el más al este es el 5 (longitud -117.82). Longitud más baja quiere decir más al oeste, hacia el Pacífico, porque el gráfico usa grados sin proyección.
+
+El MedInc medio más alto está en el cluster 2 (10.44, n=453) y el más bajo en el 0 (2.63). En el archivo, MedInc va de 0.4999 a 15.0001. Ese tope coincide con el California Housing público, donde la unidad son decenas de miles de dólares de 1990.
+
+En el mapa hay grupos que ocupan la misma zona y se distinguen por el ingreso, porque el gráfico solo muestra latitud y longitud y MedInc también entra en la distancia. Los clusters 1 y 5 tienen centros a 0.21 grados (MedInc medio 5.31 y 2.78; n=3380 y 5188). Los clusters 3 y 4 tienen centros a 0.65 grados (MedInc medio 2.84 y 5.52; n=3931 y 2239).
+
+Todos los clusters reciben viviendas de prueba. El mínimo es 112. La mayor diferencia de proporción entre entrenamiento y prueba es de 1.9 puntos porcentuales, en el cluster 5. Las cruces de la prueba caen sobre las mismas nubes que el entrenamiento: la predicción no abre una región nueva.
+
+Se elige el clasificador con mayor F1 macro medio en validación cruzada estratificada de 5 pliegues sobre el entrenamiento. Si el F1 medio empata, se prefiere la menor desviación típica de los pliegues y, después, el modelo más simple de esta lista: regresión logística, árbol de decisión, k vecinos, bosque aleatorio. El conjunto de prueba no entra en la elección.
+
+Resultado: Bosque aleatorio (100 árboles) con F1 macro medio 0.990 (desviación 0.001). El siguiente es Árbol de decisión con 0.987. La diferencia es 0.003.
+
+En la prueba, que no participó en la elección, la exactitud es 0.995, el F1 macro 0.993, el F1 ponderado 0.995 y la exactitud balanceada 0.992. El cluster con F1 más bajo es el 0 (0.990). Estas cifras miden si el clasificador reproduce las etiquetas de K-Means. No miden el precio de la vivienda ni una etiqueta humana.
+
+Importancia por impureza, variables sin estandarizar: Latitude=0.270, Longitude=0.256, MedInc=0.474.

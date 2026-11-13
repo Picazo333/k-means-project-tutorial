@@ -1,0 +1,12 @@
+{
+  "slug": "k-means-project-tutorial",
+  "title": "K-means Project Tutorial",
+  "description": "Segmentar viviendas de California por latitud, longitud e ingreso mediano con K-Means (k=6) y un clasificador supervisado.",
+  "projectType": "project",
+  "difficulty": "beginner",
+  "syntax": "python",
+  "technologies": ["data-science", "machine-learning"],
+  "duration": 2,
+  "translations": ["us"],
+  "status": "draft"
+}

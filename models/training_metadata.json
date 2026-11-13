@@ -1,0 +1,40 @@
+{
+  "dataset_url": "https://raw.githubusercontent.com/4GeeksAcademy/k-means-project-tutorial/main/housing.csv",
+  "dataset_sha256": "0e4a0bc8b337d88c95259a8ec05a58c662f26f87487f9cbf2448fe93207bcb5c",
+  "dataset_bytes": 1959699,
+  "n_rows": 20640,
+  "features": [
+    "Latitude",
+    "Longitude",
+    "MedInc"
+  ],
+  "columns_unused": [
+    "HouseAge",
+    "AveRooms",
+    "AveBedrms",
+    "Population",
+    "AveOccup",
+    "MedHouseVal"
+  ],
+  "test_size": 0.2,
+  "random_state": 42,
+  "n_clusters": 6,
+  "n_train": 16512,
+  "n_test": 4128,
+  "kmeans": {
+    "scaler": "StandardScaler ajustado en entrenamiento",
+    "n_init": 10,
+    "algorithm": "lloyd",
+    "inertia_on_scaled_train": 8069.187859270163
+  },
+  "selected_supervised_model": "random_forest",
+  "selected_supervised_label": "Bosque aleatorio (100 árboles)",
+  "selection_rule": "Se elige el clasificador con mayor F1 macro medio en validación cruzada estratificada de 5 pliegues sobre el entrenamiento. Si el F1 medio empata, se prefiere la menor desviación típica de los pliegues y, después, el modelo más simple de esta lista: regresión logística, árbol de decisión, k vecinos, bosque aleatorio. El conjunto de prueba no entra en la elección.",
+  "python": "3.12.3",
+  "sklearn": "1.9.1",
+  "pandas": "3.1.1",
+  "models": {
+    "kmeans": "models/kmeans.joblib",
+    "supervised_classifier": "models/supervised_classifier.joblib"
+  }
+}
