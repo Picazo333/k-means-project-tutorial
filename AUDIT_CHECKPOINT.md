@@ -1,7 +1,7 @@
 # Checkpoint de auditoría — actividad 52 de la plataforma
 
 **Para:** Auditor — Rodrigo Salcedo (independiente; nunca es el autor de este trabajo).
-**Fecha de este checkpoint:** 13 nov 2026, 10:35 (hora de CDMX).
+**Fecha de este checkpoint:** 13 nov 2026, 11:15 (hora de CDMX).
 **Regla de veredicto:** si el trabajo **pasa la rúbrica oficial**, se da por bueno aunque haya hallazgos menores o irrelevantes. Solo un hallazgo **GRAVE** bloquea. GRAVE = rompe un criterio de la rúbrica o la seguridad (secretos, auth, inyección, pérdida de datos). MENOR se reporta y no bloquea. IRRELEVANTE se anota y no retrasa.
 
 ## Actividad
@@ -13,17 +13,18 @@
 | Slug | `k-means-project-tutorial` |
 | Tarea LMS | 1022111 |
 | Enlace LMS | https://learn.4geeks.com/main-cohort/latam-aie-pt-6/syllabus/latam-models-training-rag/project/k-means-project-tutorial?moduleId=3 |
-| Repositorio | `Picazo333/k-means-project-tutorial` (Independiente) |
+| Repositorio | `Picazo333/k-means-project-tutorial` (independiente) |
 | PR | https://github.com/Picazo333/k-means-project-tutorial/pull/1 |
 | Rama | `cursor/kmeans-housing-bce0` |
-| Head al emitir este archivo | `120971e0cb` — [árbol](https://github.com/Picazo333/k-means-project-tutorial/tree/cursor/kmeans-housing-bce0) |
-| Estado LMS (13 nov 2026, API viva) | No |
+| Head auditado (esta pasada) | `f82157ffc00c4bb5a8773d542631e39e85ca75fa` |
+| Estado LMS (13 nov 2026, API viva, GET) | PENDING / PENDING, `github_url` vacío (tarea 1022111) |
 
 ## Rúbrica de referencia
 
-Enunciado oficial: /workspace/ejecucion/034-k-means-project-tutorial/source/. 26/26 required según el autor. Sin UI.
+Enunciado oficial: `/workspace/ejecucion/034-k-means-project-tutorial/source/OFFICIAL_README.md` @ syllabus `fd2da034` (Instructions: k=6, housing, cuaderno, modelo). Primera pasada.
 
 El auditor no usa como única fuente la autoevaluación del autor. Contrasta con el enunciado oficial. No reescribe el código, no hace merge, no envía al LMS y un autor nunca audita su propio trabajo.
+
 
 ## Qué intentar romper (de todas las formas razonables)
 
@@ -41,10 +42,11 @@ El auditor no usa como única fuente la autoevaluación del autor. Contrasta con
 
 | ID | Severidad (GRAVE / MENOR / IRRELEVANTE) | Dónde (archivo, línea, SHA, comando) | Qué se observó | Criterio de rúbrica afectado | ¿Bloquea? |
 |---|---|---|---|---|---|
-| H1 |  |  |  |  |  |
-| H2 |  |  |  |  |  |
+| — | — | `models/training_metadata.json`; pytest 10 passed (5,01 s) con `/tmp/venv-ml`. | k=6, features Latitude/Longitude/MedInc, `random_state=42`, modelos versionados (`kmeans.joblib`, clasificador supervisado), CSV derivado en `.gitignore`, cuaderno 7/7 ejecutado. | Instructions oficiales cubiertas. | No |
 
-Añade filas según haga falta. Si no hay hallazgos, dilo explícitamente.
+No hay hallazgos GRAVE. GRAVE 0, MENOR 0, IRRELEVANTE 0.
+
+HITL abiertos, no bloquean: envío al LMS (tarea 1022111, PENDING); merge. No son GRAVE.
 
 ## Veredicto
 
@@ -52,10 +54,16 @@ Añade filas según haga falta. Si no hay hallazgos, dilo explícitamente.
 - **NO READY** — hay al menos un GRAVE, o un criterio obligatorio en FAIL / UNVERIFIED que no sea HITL explícito de Miguel.
 - Los HITL de Miguel (merge, envío al LMS, VPS, key de LLM, prueba en dispositivo, video) no restan del porcentaje de la rúbrica y no los cierra el auditor.
 
+## Veredicto del auditor (13 nov 2026)
+
+- **READY / PASA. Primera pasada. pytest 10/10. 0 GRAVE.**
+- Conteos: GRAVE 0, MENOR 0, IRRELEVANTE 0.
+- Informe: `AUDIT_REPORT_52_k-means-project-tutorial.md (solo local / academic; no se publica en el repo independiente)`.
+
 ## Dónde dejar el reporte
 
-1. En esta misma rama, en `AUDIT_REPORT.md` (no en `main`; no se hace merge).
-2. Una copia en `/workspace/intake/zip_1112/runtime-private/academic/` con un nombre que no pise un recibo anterior.
+1. En esta misma rama, en el `AUDIT_CHECKPOINT.md` de la raíz (único fichero de auditoría que se publica en repos independientes). No se publica el informe aparte en la raíz.
+2. Una copia en `/workspace/intake/zip_1112/runtime-private/academic/052_ADVERSARIAL_AUDIT_2026-11-13.md` (sin pisar recibos `*_INDEPENDENT_REVIEW.md`).
 3. Avisa al Orquestador. No comentes en el LMS ni pidas tú más datos a los profesores.
 
 ## Estado portable de la cohorte
